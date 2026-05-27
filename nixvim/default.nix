@@ -1,0 +1,24 @@
+{
+  imports = [
+    ./myNvim.nix
+    ./options.nix
+    ./keymaps.nix
+    ./colorscheme.nix
+    ./plugins/treesitter.nix
+    ./plugins/lsp.nix
+    ./plugins/completion.nix
+    ./plugins/telescope.nix
+    ./plugins/neo-tree.nix
+    ./plugins/git.nix
+    ./plugins/lualine.nix
+    ./plugins/bufferline.nix
+    ./plugins/which-key.nix
+    ./plugins/formatting.nix
+    ./plugins/terminal.nix
+    ./plugins/zen-mode.nix
+    ./plugins/no-neck-pain.nix
+    ./plugins/misc.nix
+    ./plugins/ui-extras.nix
+    ./plugins/dashboard.nix
+  ];
+}
