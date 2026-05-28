@@ -54,11 +54,17 @@ in
       type = lib.types.package;
       readOnly = true;
       default = nixvimPkg;
-      description = "The built neovim package.";
+      description = "The built neovim package (before wrapping).";
+    };
+
+    finalPackage = lib.mkOption {
+      type = lib.types.package;
+      default = cfg.package;
+      description = "The package that gets installed. Override this to wrap the package (e.g. sandboxing).";
     };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ cfg.package ];
+    home.packages = [ cfg.finalPackage ];
   };
 }
