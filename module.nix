@@ -7,24 +7,19 @@
 }:
 let
   cfg = config.myNvim;
-  
-  # Home Manager 側の設定値 (cfg) を受け取って Nixvim をビルドする
+
   nixvimPkg = inputs.nixvim.legacyPackages.${pkgs.stdenv.hostPlatform.system}.makeNixvimWithModule {
     inherit pkgs;
     module = {
       imports = [ ./nixvim ];
-      
-      # Nixvim 側のオプションに Home Manager 側の値を流し込む
-      myNvim = {
-        fileExplorer = cfg.fileExplorer;
-        lsp.servers = cfg.lsp.servers;
-      };
     };
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      myNvimCfg = cfg;
+    };
   };
 in
 {
-  # Home Manager 側に公開するオプションを定義する
   options.myNvim = {
     enable = lib.mkEnableOption "my neovim configuration";
 
@@ -32,6 +27,12 @@ in
       type = lib.types.enum [ "neo-tree" "oil" ];
       default = "oil";
       description = "File explorer plugin to use";
+    };
+
+    colorscheme = lib.mkOption {
+      type = lib.types.enum [ "vscode" "tokyonight" "catppuccin" ];
+      default = "vscode";
+      description = "Colorscheme to use";
     };
 
     lsp.servers = lib.mkOption {
@@ -43,6 +44,12 @@ in
       description = "LSP servers to enable";
     };
 
+    plugins = {
+      git.enable = lib.mkEnableOption "git plugins (gitsigns, gitgraph)" // { default = true; };
+      zen.enable = lib.mkEnableOption "zen-mode and no-neck-pain plugins" // { default = true; };
+      dashboard.enable = lib.mkEnableOption "dashboard (alpha)" // { default = true; };
+    };
+
     package = lib.mkOption {
       type = lib.types.package;
       readOnly = true;
@@ -51,7 +58,6 @@ in
     };
   };
 
-  # myNvim.enable が true のとき、ビルドした Neovim パッケージをインストールする
   config = lib.mkIf cfg.enable {
     home.packages = [ cfg.package ];
   };

@@ -1,7 +1,4 @@
-{ config, lib, ... }:
-let
-  cfg = config.myNvim;
-in
+{ lib, myNvimCfg, ... }:
 lib.mkMerge [
   {
     plugins.neo-tree = {
@@ -127,7 +124,7 @@ lib.mkMerge [
     ];
   }
 
-  (lib.mkIf (cfg.fileExplorer == "oil") {
+  (lib.mkIf (myNvimCfg.fileExplorer == "oil") {
     plugins.oil = {
       enable = true;
 

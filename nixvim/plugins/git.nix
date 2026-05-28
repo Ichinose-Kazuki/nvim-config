@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ lib, pkgs, inputs, myNvimCfg, ... }:
 let
   gitgraph-nvim = pkgs.vimUtils.buildVimPlugin {
     pname = "gitgraph-nvim";
@@ -6,7 +6,7 @@ let
     src = inputs.git-graph-nvim;
   };
 in
-{
+lib.mkIf myNvimCfg.plugins.git.enable {
   plugins.neogit = {
     enable = true;
 

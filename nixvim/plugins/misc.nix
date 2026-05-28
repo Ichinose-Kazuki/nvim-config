@@ -1,13 +1,11 @@
 {
-  config,
   lib,
   pkgs,
   inputs,
+  myNvimCfg,
   ...
 }:
 let
-  cfg = config.myNvim;
-
   nvim-spectre = pkgs.vimUtils.buildVimPlugin {
     pname = "nvim-spectre";
     version = "unstable";
@@ -78,7 +76,7 @@ in
           show_end = false;
         };
         exclude.filetypes =
-          if cfg.fileExplorer == "neo-tree" then
+          if myNvimCfg.fileExplorer == "neo-tree" then
             [
               "help"
               "dashboard"

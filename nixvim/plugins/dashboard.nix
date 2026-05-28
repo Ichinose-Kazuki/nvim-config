@@ -1,5 +1,5 @@
-{ ... }:
-{
+{ lib, myNvimCfg, ... }:
+lib.mkIf myNvimCfg.plugins.dashboard.enable {
   plugins.alpha = {
     enable = true;
 
