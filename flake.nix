@@ -53,7 +53,22 @@
           module = {
             imports = [ ./nixvim ];
           };
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+            myNvimCfg = {
+              fileExplorer = "oil";
+              colorscheme = "vscode";
+              lsp.servers = [
+                "lua_ls" "nil_ls" "nixd" "ts_ls" "html" "cssls"
+                "jsonls" "pyright" "clangd" "bashls" "yamlls"
+              ];
+              plugins = {
+                git.enable = true;
+                zen.enable = true;
+                dashboard.enable = true;
+              };
+            };
+          };
         };
         formatter = pkgs.nixfmt-rfc-style;
       }

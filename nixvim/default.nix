@@ -1,6 +1,5 @@
 {
   imports = [
-    ./myNvim.nix
     ./options.nix
     ./keymaps.nix
     ./colorscheme.nix

@@ -1,7 +1,4 @@
-{ config, lib, ... }:
-let
-  cfg = config.myNvim;
-in
+{ lib, myNvimCfg, ... }:
 {
   plugins.lualine = {
     enable = true;
@@ -20,7 +17,7 @@ in
         globalstatus = true;
         disabled_filetypes = {
           statusline =
-            if cfg.fileExplorer == "neo-tree" then
+            if myNvimCfg.fileExplorer == "neo-tree" then
               [
                 "dashboard"
                 "alpha"

@@ -1,7 +1,6 @@
-{ config, lib, ... }:
+{ myNvimCfg, ... }:
 let
-  cfg = config.myNvim;
-  enabled = name: builtins.elem name cfg.lsp.servers;
+  enabled = name: builtins.elem name myNvimCfg.lsp.servers;
 in
 {
   plugins.lsp = {

@@ -1,7 +1,4 @@
-{ config, lib, ... }:
-let
-  cfg = config.myNvim;
-in
+{ lib, myNvimCfg, ... }:
 {
   plugins = {
     bufferline = {
@@ -21,7 +18,7 @@ in
         separator_style = "thin";
         always_show_bufferline = true;
         offsets =
-          if cfg.fileExplorer == "neo-tree" then
+          if myNvimCfg.fileExplorer == "neo-tree" then
             [
               {
                 filetype = "neo-tree";

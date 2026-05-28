@@ -1,5 +1,5 @@
-{ ... }:
-{
+{ lib, myNvimCfg, ... }:
+lib.mkIf myNvimCfg.plugins.zen.enable {
   plugins.no-neck-pain = {
     enable = true;
 
