@@ -39,11 +39,17 @@
   };
 
   outputs =
-    { self, nixpkgs, flake-utils, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      ...
+    }@inputs:
     {
       homeManagerModules.default = import ./module.nix { inherit inputs; };
     }
-    // flake-utils.lib.eachDefaultSystem (system:
+    // flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in
@@ -59,8 +65,16 @@
               fileExplorer = "oil";
               colorscheme = "vscode";
               lsp.servers = [
-                "lua_ls" "nil_ls" "nixd" "ts_ls" "html" "cssls"
-                "jsonls" "pyright" "clangd" "bashls" "yamlls"
+                "lua_ls"
+                "nil_ls"
+                "ts_ls"
+                "html"
+                "cssls"
+                "jsonls"
+                "pyright"
+                "clangd"
+                "bashls"
+                "yamlls"
               ];
               plugins = {
                 git.enable = true;
@@ -70,7 +84,7 @@
             };
           };
         };
-        formatter = pkgs.nixfmt-rfc-style;
+        formatter = pkgs.nixfmt;
       }
     );
 }
