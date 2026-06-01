@@ -37,7 +37,6 @@ in
       };
 
       nil_ls.enable = enabled "nil_ls";
-      nixd.enable = enabled "nixd";
 
       ts_ls.enable = enabled "ts_ls";
       html.enable = enabled "html";
