@@ -7,60 +7,51 @@
       formatters_by_ft = {
         lua = [ "stylua" ];
         python = [ "ruff_format" ];
-        javascript = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        typescript = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        javascriptreact = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        typescriptreact = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        json = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        markdown = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        yaml = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        html = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        css = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
+        javascript = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        typescript = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        javascriptreact = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        typescriptreact = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        json = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        markdown = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        yaml = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        html = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
+        css = {
+          __unkeyed-1 = "prettierd";
+          __unkeyed-2 = "prettier";
+          stop_after_first = true;
+        };
         nix = [ "nixpkgs-fmt" ];
         sh = [ "shfmt" ];
         c = [ "clang-format" ];
