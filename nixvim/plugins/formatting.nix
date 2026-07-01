@@ -1,5 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  extraPackages = with pkgs; [
+    prettierd
+    stylua
+    ruff
+    nixpkgs-fmt
+    shfmt
+    clang-tools
+  ];
+
   plugins.conform-nvim = {
     enable = true;
 
