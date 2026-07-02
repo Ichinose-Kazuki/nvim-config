@@ -135,6 +135,23 @@ lib.mkMerge [
         view_options = {
           show_hidden = true;
         };
+        float = {
+          override.__raw = ''
+            function(conf)
+              local ok, nnp = pcall(require, "no-neck-pain")
+              if ok and nnp.options then
+                local max_w = nnp.options.width
+                if conf.width > max_w then
+                  conf.width = max_w
+                end
+                conf.col = math.floor(
+                  (vim.o.columns - conf.width) / 2
+                )
+              end
+              return conf
+            end
+          '';
+        };
         keymaps = {
           "<Esc>" = "actions.close";
           "j".__raw = ''
