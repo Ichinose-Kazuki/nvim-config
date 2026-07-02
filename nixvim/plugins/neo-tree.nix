@@ -249,7 +249,13 @@ lib.mkMerge [
               if target_win == cur_win then
                 oil.select()
               else
-                vim.cmd("edit " .. vim.fn.fnameescape(dir .. entry.name))
+                local buf = vim.api.nvim_win_get_buf(target_win)
+                if vim.bo[buf].filetype == "no-neck-pain" then
+                  vim.api.nvim_set_current_win(cur_win)
+                  oil.select()
+                else
+                  vim.cmd("edit " .. vim.fn.fnameescape(dir .. entry.name))
+                end
               end
             end
           '';
