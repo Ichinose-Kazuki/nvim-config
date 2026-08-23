@@ -80,7 +80,7 @@ in
     finalPackage = lib.mkOption {
       type = lib.types.package;
       default = cfg.package;
-      description = "The package that gets installed. Override this to wrap the package (e.g. sandboxing).";
+      description = "The package that gets installed. Only has a value when `enable` is true. Override this to wrap the package (e.g. sandboxing).";
     };
   };
 
