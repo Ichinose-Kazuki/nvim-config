@@ -46,7 +46,7 @@
       ...
     }@inputs:
     {
-      homeManagerModules.default = import ./hm.nix { inherit inputs; };
+      homeModules.default = import ./hm.nix { inherit inputs; };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
