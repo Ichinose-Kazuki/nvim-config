@@ -46,44 +46,26 @@
       ...
     }@inputs:
     {
-      homeManagerModules.default = import ./module.nix { inherit inputs; };
+      homeManagerModules.default = import ./hm.nix { inherit inputs; };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        packages.default = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-          inherit pkgs;
-          module = {
-            imports = [ ./nixvim ];
-          };
-          extraSpecialArgs = {
-            inherit inputs;
-            myNvimCfg = {
-              fileExplorer = "oil";
-              colorscheme = "vscode";
-              lsp.servers = [
-                "lua_ls"
-                "nil_ls"
-                "ts_ls"
-                "html"
-                "cssls"
-                "jsonls"
-                "pyright"
-                "clangd"
-                "bashls"
-                "yamlls"
-              ];
-              plugins = {
-                git.enable = true;
-                zen.enable = true;
-                dashboard.enable = true;
-              };
-            };
+        inherit (pkgs) lib;
+
+        ev = lib.evalModules {
+          modules = [
+            (import ./core.nix { inherit inputs; })
+            { myNvim.enable = true; }
+          ];
+          specialArgs = {
+            inherit pkgs;
           };
         };
+      in
+      {
+        packages.default = ev.config.myNvim.finalPackage;
         formatter = pkgs.nixfmt;
       }
     );
