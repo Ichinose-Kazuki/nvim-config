@@ -1,7 +1,8 @@
-{ myNvimCfg, ... }:
-let
-  enabled = name: builtins.elem name myNvimCfg.lsp.servers;
-in
+{
+  myNvimCfg,
+  lib,
+  ...
+}:
 {
   plugins.lsp = {
     enable = true;
@@ -27,29 +28,13 @@ in
       };
     };
 
-    servers = {
-      lua_ls = {
-        enable = enabled "lua_ls";
-        settings.Lua = {
+    servers = lib.recursiveUpdate
+      (lib.genAttrs myNvimCfg.lsp.servers (name: { enable = true; }))
+      {
+        lua_ls.settings.Lua = {
           diagnostics.globals = [ "vim" ];
           workspace.checkThirdParty = false;
         };
       };
-
-      nil_ls.enable = enabled "nil_ls";
-
-      ts_ls.enable = enabled "ts_ls";
-      html.enable = enabled "html";
-      cssls.enable = enabled "cssls";
-      jsonls.enable = enabled "jsonls";
-
-      pyright.enable = enabled "pyright";
-
-      clangd.enable = enabled "clangd";
-
-      bashls.enable = enabled "bashls";
-
-      yamlls.enable = enabled "yamlls";
-    };
   };
 }

@@ -8,6 +8,19 @@
 let
   cfg = config.myNvim;
 
+  supportedLspServers = [
+    "lua_ls"
+    "nil_ls"
+    "ts_ls"
+    "html"
+    "cssls"
+    "jsonls"
+    "pyright"
+    "clangd"
+    "bashls"
+    "yamlls"
+  ];
+
   nixvimPkg = inputs.nixvim.legacyPackages.${pkgs.stdenv.hostPlatform.system}.makeNixvimWithModule {
     inherit pkgs;
     module = {
@@ -43,19 +56,8 @@ in
     };
 
     lsp.servers = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [
-        "lua_ls"
-        "nil_ls"
-        "ts_ls"
-        "html"
-        "cssls"
-        "jsonls"
-        "pyright"
-        "clangd"
-        "bashls"
-        "yamlls"
-      ];
+      type = lib.types.listOf (lib.types.enum supportedLspServers);
+      default = supportedLspServers;
       description = "LSP servers to enable";
     };
 
