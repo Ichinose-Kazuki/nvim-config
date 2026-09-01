@@ -19,7 +19,6 @@
     cursorline = true;
     scrolloff = 8;
     sidescrolloff = 8;
-    clipboard = "unnamedplus";
     mouse = "a";
     timeoutlen = 300;
     updatetime = 250;

@@ -1,6 +1,7 @@
 {
   imports = [
     ./options.nix
+    ./clipboard.nix
     ./keymaps.nix
     ./colorscheme.nix
     ./plugins/treesitter.nix
