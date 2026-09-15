@@ -24,7 +24,7 @@ let
     src = inputs.incline-nvim;
   };
 
-  markviewMaxBufLines = 1000;
+  markviewMaxBufLines = 100;
 in
 {
   opts = {
