@@ -23,6 +23,8 @@ let
     version = "unstable";
     src = inputs.incline-nvim;
   };
+
+  markviewMaxBufLines = 1000;
 in
 {
   opts = {
@@ -58,6 +60,11 @@ in
             "i"
           ];
           hybrid_modes = [ "i" ];
+          max_buf_lines = markviewMaxBufLines;
+          draw_range = [
+            (markviewMaxBufLines / 2)
+            (markviewMaxBufLines / 2)
+          ];
         };
       };
     };
