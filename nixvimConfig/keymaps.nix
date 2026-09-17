@@ -1,6 +1,38 @@
 { ... }:
 {
   keymaps = [
+    # Disable accidental edits and unconfirmed quit shortcuts
+    {
+      mode = "n";
+      key = "J";
+      action = "<Nop>";
+      options.desc = "Disable join lines";
+    }
+    {
+      mode = "n";
+      key = "C";
+      action = "<Nop>";
+      options.desc = "Disable change to end of line";
+    }
+    {
+      mode = "n";
+      key = "ZZ";
+      action = "<Nop>";
+      options.desc = "Disable save and quit";
+    }
+    {
+      mode = "n";
+      key = "ZQ";
+      action = "<Nop>";
+      options.desc = "Disable quit without saving";
+    }
+    {
+      mode = "v";
+      key = "J";
+      action = "<Nop>";
+      options.desc = "Disable join selection";
+    }
+
     # Window navigation
     {
       mode = "n";
