@@ -45,7 +45,7 @@ LSP サーバは enum 制限: `lua_ls` / `nil_ls` / `ts_ls` / `html` / `cssls` /
 - **Git**: neogit、diffview、gitsigns、gitgraph
 - **フォーマット**: conform-nvim。`prettierd` / `stylua` / `ruff` / `nixpkgs-fmt` / `shfmt` / `clang-format` を同梱
 - **Treesitter**: highlight / indent / context / textobjects
-- **UI**: lualine、bufferline、which-key、noice、notify、alpha、incline、nvim-scrollbar、markview、
+- **UI**: lualine、bufferline、which-key、noice、notify、alpha、incline、nvim-scrollbar、aerial、markview、
   nvim-ufo、indent-blankline、todo-comments、web-devicons
 - **その他**: flash、comment、nvim-autopairs、toggleterm
 - **クリップボード**: `+` レジスタのプロバイダを OSC 52 に固定。外部クリップボードツールなしで、
@@ -107,6 +107,8 @@ leader は `<Space>`。すべてのキーマップは `keymaps.nix` と各プラ
 | --- | --- | --- |
 | `<leader>z` | n | zen mode |
 | `<leader>n` | n | no-neck-pain |
+| `<leader>O` | n | アウトライン表示 (aerial) |
+| `]o` / `[o` | n | 次 / 前の見出しへ移動 (aerial) |
 | `zR` / `zM` / `zK` | n | 全 fold 開く / 閉じる / peek (ufo) |
 
 ## ビルド確認

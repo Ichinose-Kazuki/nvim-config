@@ -19,6 +19,7 @@
     ./plugins/no-neck-pain.nix
     ./plugins/misc.nix
     ./plugins/ui-extras.nix
+    ./plugins/aerial.nix
     ./plugins/dashboard.nix
   ];
 }
