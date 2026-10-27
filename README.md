@@ -65,6 +65,7 @@ leader は `<Space>`。すべてのキーマップは `keymaps.nix` と各プラ
 | `<leader><leader>` | n | smart-open（開いた頻度順のファイル選択） |
 | `<leader>e` / `<leader>E` | n | oil / neo-tree トグル |
 | `<leader>ft` | n | TODO 検索 |
+| `<leader>f:` | n | 全 Ex コマンド一覧（説明付き、選択でヘルプを開く） |
 
 ### 編集・保存
 

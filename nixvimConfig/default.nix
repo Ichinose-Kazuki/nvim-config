@@ -4,6 +4,7 @@
     ./clipboard.nix
     ./keymaps.nix
     ./colorscheme.nix
+    ./ex-command-palette.nix
     ./plugins/treesitter.nix
     ./plugins/lsp.nix
     ./plugins/completion.nix
