@@ -21,5 +21,7 @@
     ./plugins/ui-extras.nix
     ./plugins/aerial.nix
     ./plugins/dashboard.nix
+    ./plugins/image.nix
+    ./plugins/graphviz.nix
   ];
 }
